@@ -1,3 +1,4 @@
+import time
 from scrapegraphai.graphs import SmartScraperGraph
 from scrapegraphai.utils import prettify_exec_info
 
@@ -21,11 +22,13 @@ graph_config = {
 # ************************************************
 
 smart_scraper_graph = SmartScraperGraph(
-   prompt="List me all the news with their description.",
+   prompt="List me all the news with their description, and details page link.",
    # also accepts a string with the already downloaded HTML code
    source="https://perinim.github.io/projects",
    config=graph_config
 )
 
+start_time = time.time()
 result = smart_scraper_graph.run()
 print(result)
+print("耗时：", time.time() - start_time, "秒")
